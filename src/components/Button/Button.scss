@@ -1,0 +1,10 @@
+@import '../../assets/main-styles.scss';
+
+.button {
+  background-color: $active-btns-color;
+  padding: 5px 15px;
+  color: $light-text-color;
+  border: none;
+  border-radius: 5px;
+  @include main-font(400, 0.75rem);
+}

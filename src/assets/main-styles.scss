@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+$light-background-color: #F3F3F3 ;
+$dark-background-color: #A3A3A3;
+$active-btns-color: #4B51EF;
+$light-text-color: #FFFFFF;
+
+@mixin main-font($weight, $size) {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 14px;
+}
+body {
+  margin: 0;
+  @include main-font(400, 16px)
+}
+#root{
+  display: flex;
+  align-items: stretch;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 665px;
+}
