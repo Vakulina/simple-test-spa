@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route} from 'react-router-dom';
-import Card from './components/Card';
+import CardsList from './components/CardsList/CardsList';
 import {IAddress, ICompany, IUser} from "./types/types";
 import { url} from './assets/config';
 
 function App() {
-  const [users, setUsers] = React.useState<IUser | null>(null)
+  const [users, setUsers] = React.useState<IUser[]>([])
   const [isLoader, setStatusLoading] = React.useState<boolean>(true)
  
   React.useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
 
     .then((response) => {
       setUsers(response);
-      console.log(response, users)
+
       setStatusLoading(false);
     })
     .catch((error) => {
@@ -40,7 +40,7 @@ function App() {
   return (
     <BrowserRouter>
   
-<Card name="kfkf" city="fffff" company="russia"/>
+<CardsList users={users}/>
 
     </BrowserRouter>
   );
