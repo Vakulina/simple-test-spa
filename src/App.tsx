@@ -3,6 +3,7 @@ import {BrowserRouter, NavLink, Route} from 'react-router-dom';
 import CardsList from './components/CardsList/CardsList';
 import {IAddress, ICompany, IUser} from "./types/types";
 import { url} from './assets/config';
+import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
   const [users, setUsers] = React.useState<IUser[]>([])
@@ -39,8 +40,10 @@ function App() {
 
   return (
     <BrowserRouter>
+<Sidebar/>
+
   
-<CardsList users={users}/>
+    <CardsList users={users}/>
 
     </BrowserRouter>
   );
