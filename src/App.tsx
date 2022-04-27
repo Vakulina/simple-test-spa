@@ -17,6 +17,7 @@ function App() {
     fetchUser()
   }, [])
 
+
   function fetchUser() {
     fetch(url)
       .then((res) => {
@@ -40,11 +41,31 @@ function App() {
       })
   }
 
+  function sortByCity(x: IUser, y: IUser) {
+    if (x.address.city < y.address.city) { return -1; }
+    if (x.address.city > y.address.city) { return 1; }
+    return 0;
+  }
+  function sortByCompany(x: IUser, y: IUser) {
+    if (x.company.name < y.company.name) { return -1; }
+    if (x.company.name > y.company.name) { return 1; }
+    return 0;
+  }
+
+  const citySort = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const sortUsers: IUser[] = [...users].sort(sortByCity);
+      setUsers(sortUsers);
+  }
+
+  const companySort = (e: React.MouseEvent<HTMLButtonElement>) => {
+     const sortUsers: IUser[] = [...users].sort(sortByCompany);
+     setUsers(sortUsers);
+  }
 
   return (
     <BrowserRouter>
-      <Sidebar />
-      { isLoader ? <Spinner /> :  <CardsList users={users} /> }
+      <Sidebar citySort={citySort} companySort={companySort} />
+      {isLoader ? <Spinner /> : <CardsList users={users} />}
     </BrowserRouter>
   );
 }
