@@ -31,10 +31,8 @@ function App() {
         }
       })
 
-
       .then((response) => {
         setUsers(response);
-
         setStatusLoading(false);
       })
       .catch((error) => {
@@ -45,12 +43,8 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <Sidebar />
-<Spinner/>
-
-      <CardsList users={users} />
-
+      { isLoader ? <Spinner /> :  <CardsList users={users} /> }
     </BrowserRouter>
   );
 }
