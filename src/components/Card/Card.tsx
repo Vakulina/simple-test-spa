@@ -10,9 +10,9 @@ const Card: React.FC<CardProps> = ({ name, city, company }) => {
   return (
 
     <div className='card'>
-      <p>ФИО: {name}</p>
-      <p>город: {city}</p>
-      <p>компания: {company}</p>
+      <p>ФИО: <span>{name}</span></p>
+      <p>город: <span>{city}</span></p>
+      <p>компания: <span>{company}</span></p>
     </div>
   )
 }

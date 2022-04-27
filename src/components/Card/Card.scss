@@ -1,7 +1,27 @@
 @import '../../assets/main-styles.scss';
 .card {
   width: 100%;
-  max-width: 420px;
+  box-sizing: border-box;
   height: 72px;
   background-color: $light-background-color;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  
+  p{
+    color: $service-text-color;
+    @include main-font(400, 0.6875rem, 0.8125rem);
+    margin: 0;
+    margin-bottom: 7px;
+   
+  }
+  span{
+    color: $dark-text-color;
+    @include main-font(400, 0.6875rem, 0.8125rem);
+    padding-left: 7px;
+   
+  }
+  &:last-of-type{
+    margin-bottom: 10px;
+  }
 }

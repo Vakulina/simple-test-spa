@@ -11,7 +11,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className='sidebar'>
-      <p>Сортировка</p>
+      <p className='sidebar__paragraf'>Сортировка</p>
       <Button onClick={handleCitySort} buttonText="по городу" />
       <Button onClick={handleCompanySort} buttonText="по компании" />
     </div>

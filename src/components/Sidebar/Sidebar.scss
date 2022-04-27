@@ -9,8 +9,8 @@
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
-    p{
+  .sidebar__paragraf{
       margin: 0;
-      @include main-font(400, 0.875rem)
+      @include main-font(400, 0.75rem, 0.875rem)
     }
 }

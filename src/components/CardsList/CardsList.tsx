@@ -1,18 +1,21 @@
 import React from "react";
 import { IUser } from '../../types/types';
 import Card from '../Card/Card';
+import './CardList.scss'
 
 interface CardsListProps {
-users: IUser[];
+  users: IUser[];
 }
 const CardsList: React.FC<CardsListProps> = ({ users }) => {
-  console.log(users[0])
+
   return (
 
-    <div >
-  {users.map(user => {
-    return <Card name={user.name} city={user.address.city} company={user.company.name} key={user.id}/>  
-     })}
+    <div className="cardsList">
+      <p className="cardsList__paragraf">Список пользователей</p>
+      {users.map(user => {
+        return <Card name={user.name} city={user.address.city} company={user.company.name} key={user.id} />
+      })}
+      <p className="cardList__count">Найдено <span>{users.length}</span> пользователей</p>
     </div>
   )
 }
