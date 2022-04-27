@@ -5,6 +5,8 @@ import { IAddress, ICompany, IUser } from "./types/types";
 import { url } from './assets/config';
 import Sidebar from './components/Sidebar/Sidebar';
 import './assets/main-styles.scss';
+import './components/Spinner/Spinner'
+import Spinner from './components/Spinner/Spinner';
 
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
     <BrowserRouter>
 
       <Sidebar />
-
+<Spinner/>
 
       <CardsList users={users} />
 
