@@ -6,8 +6,21 @@
   color: $light-text-color;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
   @include main-font(400, 0.75rem, 0.75rem);
-  &:hover{
+
+  &:hover {
     filter: grayscale(.2);
+  }
+}
+
+.button_at-card {
+  background: transparent;
+  color: $active-btns-color;
+position: absolute;
+bottom: 10px;
+right: 10px;
+  &:hover {
+    filter: grayscale(.5);
   }
 }

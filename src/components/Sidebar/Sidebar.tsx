@@ -4,10 +4,10 @@ import Button from '../Button/Button';
 import { NavLink } from 'react-router-dom';
 
 interface SidebarProps {
-  citySort: (e: React.MouseEvent<HTMLButtonElement>)=>void;
-  companySort: (e: React.MouseEvent<HTMLButtonElement>)=>void;
+  citySort: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  companySort: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const Sidebar: React.FC<SidebarProps> = ({citySort, companySort}) => {
+const Sidebar: React.FC<SidebarProps> = ({ citySort, companySort }) => {
   const handleCitySort = (e: React.MouseEvent<HTMLButtonElement>) => {
     citySort(e);
   }

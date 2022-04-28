@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Navigate, Routes } from 'react-router-dom';
 import CardsList from './components/CardsList/CardsList';
 import { IAddress, ICompany, IUser } from "./types/types";
 import { url } from './assets/config';
@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import './assets/main-styles.scss';
 import './components/Spinner/Spinner'
 import Spinner from './components/Spinner/Spinner';
+import Profile from './components/Profile/Profile'
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
         console.log(error);
       })
   }
-
+  console.log('55555555555')
   function sortByCity(x: IUser, y: IUser) {
     if (x.address.city < y.address.city) { return -1; }
     if (x.address.city > y.address.city) { return 1; }
@@ -65,7 +66,13 @@ function App() {
   return (
     <BrowserRouter>
       <Sidebar citySort={citySort} companySort={companySort} />
-      {isLoader ? <Spinner /> : <CardsList users={users} />}
+      <Routes>
+      <Route path='/' element= {isLoader ? <Spinner /> : <CardsList users={users} />} />
+
+      <Route path="*" element={<Navigate to="/" />} />
+      <Route path='/:id' element={ <Profile users={users}/> }/>
+    
+      </Routes>
     </BrowserRouter>
   );
 }
