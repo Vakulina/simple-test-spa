@@ -10,7 +10,7 @@ const Profile: React.FC<ProfileProps>= ({users}) => {
 
 const index = Number(id)
 
-const user:IUser|undefined =users.length>0? users.find((item:IUser )=> item.id===index):undefined
+const user:IUser|undefined =users.length>0 ? users.find((item:IUser )=> item.id===index):undefined
 
   return (
     <div className='profile'>

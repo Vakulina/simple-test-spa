@@ -1,17 +1,22 @@
 import './Sidebar.scss';
 import React from 'react';
 import Button from '../Button/Button';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 interface SidebarProps {
   citySort: (e: React.MouseEvent<HTMLButtonElement>) => void;
   companySort: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 const Sidebar: React.FC<SidebarProps> = ({ citySort, companySort }) => {
+  const navigation = useNavigate()
+
   const handleCitySort = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigation('/');
     citySort(e);
+  
   }
   const handleCompanySort = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigation('/');
     companySort(e);
   }
 

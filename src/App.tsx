@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route, Navigate, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Navigate, Routes, useNavigate } from 'react-router-dom';
 import CardsList from './components/CardsList/CardsList';
 import { IAddress, ICompany, IUser } from "./types/types";
 import { url } from './assets/config';
@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile'
 function App() {
   const [users, setUsers] = React.useState<IUser[]>([])
   const [isLoader, setStatusLoading] = React.useState<boolean>(true)
+
 
   React.useEffect(() => {
     fetchUser()
@@ -41,7 +42,6 @@ function App() {
         console.log(error);
       })
   }
-  console.log('55555555555')
   function sortByCity(x: IUser, y: IUser) {
     if (x.address.city < y.address.city) { return -1; }
     if (x.address.city > y.address.city) { return 1; }
