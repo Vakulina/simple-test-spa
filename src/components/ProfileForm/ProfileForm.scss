@@ -28,12 +28,12 @@
       padding: 5px 10px;
       box-sizing: border-box;
       margin-bottom: 10px;
+      @include main-font(400, 0.625rem, 0.75rem);
     }
 
     &:disabled {
       input {
         color: rgba(0, 0, 0, .3);
-        @include main-font(400, 0.625rem, 0.75rem);
       }
     }
   }
