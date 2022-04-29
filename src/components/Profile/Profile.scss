@@ -3,13 +3,18 @@
 
 .profile {
   @extend %content-wrapper;
+  padding: 13px 41px 13px 32px;
  h2{
- @include main-font(700, 0.875rem, 1rem) 
+ @include main-font(700, 0.875rem, 1rem);
+ margin: 0;
+
+
  }
  div{
    display: flex;
    justify-content: space-between;
    width: 100%;
    align-items: center;
+   margin-bottom: 11px;
  }
 }

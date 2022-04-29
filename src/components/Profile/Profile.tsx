@@ -16,14 +16,14 @@ const index = Number(id)
 const user:IUser|undefined =users.length>0 ? users.find((item:IUser )=> item.id===index):undefined
 
   return (
-    <div className='profile'>
+    <section className='profile'>
       <div>
       <h2>Профиль пользоватeля</h2>
       <Button onClick={()=>{}} buttonText="Редактировать" className='button_edit-form'/>
       </div>
   {user&&<ProfileForm user={user}/>}
 
-  </div>
+  </section>
   )
 }
 export default Profile;

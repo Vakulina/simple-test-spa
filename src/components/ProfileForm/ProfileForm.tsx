@@ -1,5 +1,6 @@
 import React from "react";
-import { IUser } from '../../types/types'
+import { IUser } from '../../types/types';
+import './ProfileForm.scss'
 
 interface ProfileFormProps {
   user: IUser | undefined;
@@ -9,9 +10,9 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
 const [name, setName] = React.useState<string|undefined>(user?user.name:undefined);
 
   return (
-    <section className='profile'>
-      
-      <form className='profile__form ' noValidate>
+       
+      <form className='profile__form' noValidate>
+        <fieldset disabled>
             <label
               className='profile__label'
               htmlFor='profile-name'>Name</label>
@@ -25,13 +26,13 @@ const [name, setName] = React.useState<string|undefined>(user?user.name:undefine
               required
               id='register-name'
               value={name}
-              readOnly
+             
                />
            
-
+           </fieldset>
       </form>
 
-    </section>
+
   )
 }
 export default ProfileForm;

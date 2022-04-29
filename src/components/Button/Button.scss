@@ -17,15 +17,17 @@
 .button_at-card {
   background: transparent;
   color: $active-btns-color;
-position: absolute;
-bottom: 10px;
-right: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
   &:hover {
     filter: grayscale(.5);
   }
-
 }
-.button_edit-form{
-  padding: 6px 11px;
+
+.button_edit-form {
+  padding: 6px 12px;
   @include main-font(400, 0.75rem, 0.875rem);
+  margin-right: 4px;
 }
