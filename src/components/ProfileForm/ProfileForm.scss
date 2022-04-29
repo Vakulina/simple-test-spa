@@ -8,7 +8,7 @@
   fieldset {
     width: 100%;
     box-sizing: border-box;
-    padding: 20px auto 19px 12px;
+    padding: 20px 12px 19px 12px;
     border: 1px $light-background-color solid;
     border-radius: 8px;
     display: flex;
@@ -16,19 +16,33 @@
 
     label {
       @include main-font(400, 0.5rem, 0.59rem);
-      margin-bottom: 3px;
-    }
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      max-width: 211px;
+    
 
     input {
-      min-width: 211px;
+    
       height: 23px;
       background-color: $light-text-color;
       border: 1px solid $border-color;
       border-radius: 5px;
       padding: 5px 10px;
       box-sizing: border-box;
-      margin-bottom: 10px;
+  margin-top: 3px;
       @include main-font(400, 0.625rem, 0.75rem);
+    }
+    &:last-of-type{
+      max-width: 100%;
+    }
+    textarea{
+      height: 55px;
+      background-color: $light-text-color;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      resize: none;
+    }
     }
 
     &:disabled {

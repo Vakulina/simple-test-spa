@@ -31,3 +31,13 @@
   @include main-font(400, 0.75rem, 0.875rem);
   margin-right: 4px;
 }
+.button_send-form{
+  display: block;
+  padding: 5px 8px 5px 15px;
+  background-color: $color-send-btn;
+ margin: 10px 0 0 auto;
+
+}
+.button_send-form:disabled{
+  background-color: $color-disabled-btns
+}

@@ -13,8 +13,7 @@ const Card: React.FC<CardProps> = ({ id, name, city, company }) => {
   const navigation = useNavigate();
   
   const handleClick=(e: React.MouseEvent<HTMLButtonElement>)=>{
-    console.log("fff")
-    navigation(`/${id}`)
+     navigation(`/${id}`)
   }
 
   return (
