@@ -23,4 +23,9 @@ right: 10px;
   &:hover {
     filter: grayscale(.5);
   }
+
+}
+.button_edit-form{
+  padding: 6px 11px;
+  @include main-font(400, 0.75rem, 0.875rem);
 }

@@ -2,15 +2,14 @@
 
 
 .cardsList {
-  width: 100%;
-  max-width: 420px;
-  padding: 19px 59px 25px 34px;
+@extend %content-wrapper;
 
-  .cardsList__paragraf{
-@include main-font(700, 0.875rem, 1rem);
-margin: 0 0 15px 0;
+  .cardsList__paragraf {
+    @include main-font(700, 0.875rem, 1rem);
+    margin: 0 0 15px 0;
   }
-  .cardList__count{
+
+  .cardList__count {
     text-align: right;
     @include main-font(400, 0.75rem, 0.875rem);
     margin: 0;

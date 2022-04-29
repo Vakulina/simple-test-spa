@@ -8,7 +8,13 @@ $light-text-color: #FFFFFF;
 $dark-text-color: #000000;
 
 $service-text-color: #A3A3A3;
-
+%content-wrapper {
+  width: 100%;
+  max-width: 513px;
+  padding: 19px 59px 25px 34px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
 
 @mixin main-font($weight, $size, $height) {
   font-family: 'Roboto', sans-serif;

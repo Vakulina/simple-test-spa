@@ -1,1 +1,15 @@
+@import '../../assets/main-styles.scss';
 
+
+.profile {
+  @extend %content-wrapper;
+ h2{
+ @include main-font(700, 0.875rem, 1rem) 
+ }
+ div{
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   align-items: center;
+ }
+}

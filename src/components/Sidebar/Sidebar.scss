@@ -1,6 +1,7 @@
 @import '../../assets/main-styles.scss';
 
 .sidebar {
+  box-sizing: border-box;
   width: 152px;
   height: auto;
   background-color: $dark-background-color;
