@@ -32,6 +32,10 @@
       box-sizing: border-box;
   margin-top: 3px;
       @include main-font(400, 0.625rem, 0.75rem);
+
+    }
+    .profile__input_invalid{
+      border: 1px $color-of-error solid;
     }
     &:last-of-type{
       max-width: 100%;
