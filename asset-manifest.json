@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/simple-test-spa/static/css/main.e27f1b8e.css",
+    "main.js": "/simple-test-spa/static/js/main.6640f1a9.js",
+    "index.html": "/simple-test-spa/index.html",
+    "main.e27f1b8e.css.map": "/simple-test-spa/static/css/main.e27f1b8e.css.map",
+    "main.6640f1a9.js.map": "/simple-test-spa/static/js/main.6640f1a9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e27f1b8e.css",
+    "static/js/main.6640f1a9.js"
+  ]
+}
