@@ -19,9 +19,9 @@
 - при нажатии кнопки "Отправить" из данных формы формируется JSON и выводится в консоль.
 
 ## Используемые технологии:
-HTML5
-SCSS
-JavaScript (ES6)
-Typescript
-React (Create Reacte App)
-React-hooks
+- HTML5
+- SCSS
+- JavaScript (ES6)
+- Typescript
+- React (Create Reacte App)
+- React-hooks
