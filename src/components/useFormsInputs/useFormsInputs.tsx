@@ -3,9 +3,9 @@ import { ChangeEvent,  useState } from 'react';
 type IValidatorFN = (s: string) => {};
 
 export interface IField {
-  value?: string;
+  value: string;
   type?: string;
-  label?: string;
+  label: string;
   error?: string;
   isValid?: boolean;
   required?: boolean;

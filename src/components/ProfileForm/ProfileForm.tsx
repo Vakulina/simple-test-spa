@@ -1,27 +1,21 @@
 import React from "react";
+import { ChangeEvent} from 'react'
 import { IUser } from '../../types/types';
 import Button from "../Button/Button";
-import { useFormsInputs, IValues } from "../useFormsInputs/useFormsInputs";
+import { useFormsInputs} from "../useFormsInputs/useFormsInputs";
 import './ProfileForm.scss'
 
 interface ProfileFormProps {
   user: IUser | undefined;
   isDisabled: boolean;
 }
+interface IStringIndex {
+  [key: string]: any
+}
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
-  const [errors, showErrors ] = React.useState<boolean>(false)
-  /*  value?: string;
-    type?: string;
-    label?: string;
-
-
-    error?: string;
-    isValid?: boolean;
-    required?: boolean;
-    touched?: boolean;
-    setState?: (event: ChangeEvent<HTMLInputElement>) => {};
-    validators?: IValidatorFN[];*/
+  const [errors, showErrors ] = React.useState<boolean>(false);
+  const [comment, setComment] =React.useState<string>('');
   const formInputs = {
     name: {
       value: `${(user && user.name)}`,
@@ -31,7 +25,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       validators: [
         (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => s.length < 2 && 'Минимальная длина строки 2',
-        (s: string) => s.length > 60 && 'Мфксимальная длина строки 60',
+        (s: string) => s.length > 60 && 'Максимальная длина строки 60',
       ],
     },
     username: {
@@ -40,6 +34,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "User name",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => s.length < 2 && 'Минимальная длина строки 2',
         (s: string) => s.length > 60 && 'Максимальная длина строки 60',
       ],
@@ -50,6 +45,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "E-mail",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => !(/[^@\s]+@[^@\s]+\.[^@\s]+/).test(s)&& 'Введите валидный e-mail',
       ],
     },
@@ -59,6 +55,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "Street",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => s.length < 2 && 'Минимальная длина строки 2',
         (s: string) => s.length > 60 && 'Максимальная длина строки 60',
       ],
@@ -69,6 +66,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "City",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => s.length < 2 && 'Минимальная длина строки 2',
         (s: string) => s.length > 60 && 'Максимальная длина строки 60',
       ],
@@ -79,6 +77,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "Zip code",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => !(/[1-9-]+/).test(s)&& 'Введите валидный zipcode',
       ],
     },
@@ -88,6 +87,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "Phone",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => s.length < 2 && 'Минимальная длина строки 2',
         (s: string) => s.length > 60 && 'Максимальная длина строки 60',
       ],
@@ -98,38 +98,45 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       label: "Website",
       required: true,
       validators: [
+        (s: string) => !s.length && 'Поле обязательно для заполнения',
         (s: string) => !(/^(https?:\/\/)?([\w\.]+)\.([a-z]{2,6}\.?)(\/[\w\.]*)*\/?$/).test(s)&& 'Введите валидный website',
-      ],
-      
+      ],   
     },
-
   }
 
   const { fields, isValid } = useFormsInputs(formInputs);
 
   const { name, username, email, street, city, zipcode, phone, website } = fields;
-
-  const onSubmit = ({ values }: { values: IValues }) => {
-    console.log(values, 'submit');
-  }
-
+ 
   const formFields = [name, username, email, street, city, zipcode, phone, website];
   
+  function handleCommentChange(e:ChangeEvent<HTMLTextAreaElement>) {
+    setComment(e.target.value);
+  }
+
+  const getNewData= () => {
+    const myObj: IStringIndex = {}
+    formFields.forEach(field => {
+      const prop = field.label.toLocaleLowerCase().replace(' ', '-')
+      myObj[prop] = field.value
+    })
+    myObj.comment=comment;
+    console.log(JSON.stringify(myObj))
+  }
   return (
     <>
-      <form className='profile__form' onSubmit={(e) => {
-        e.preventDefault()
-
-        if (isValid) {
-          console.log(fields)
-        }
-        else {
-          showErrors(true)
-        }
+      <form className='profile__form' onSubmit={(e)=>{
+              e.preventDefault()
+              if (isValid) {
+              getNewData()
+              }
+              else {
+                showErrors(true)
+              }
       }}>
         <fieldset disabled={isDisabled}>
           {formFields.map((field, index) => (
-            <>
+
               <label key={index} className='profile__label'>
                 {field.label}
                 <input
@@ -138,16 +145,16 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
                   value={field.value}
                   onChange={field.setState}
                 />
-              </label>
-              {errors&&field.error && <span className="profile__error">{
+                    {errors&&field.error && <span className="profile__error">{
                 field.error
               }</span>}
-            </>
+              </label>
+  
           )
           )}
           <label className='profile__label'>
             Comment
-            <textarea className="profile__comment"></textarea>
+            <textarea className="profile__comment" onChange={(e: ChangeEvent<HTMLTextAreaElement>)=>handleCommentChange(e)}></textarea>
           </label>
         </fieldset>
         <Button className="button_send-form" onClick={() => { }} buttonText="Отправить" disabled={isDisabled} />

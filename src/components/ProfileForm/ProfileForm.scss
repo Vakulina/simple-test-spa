@@ -20,33 +20,42 @@
       display: flex;
       flex-direction: column;
       max-width: 211px;
-    
+      position: relative;
 
-    input {
-    
-      height: 23px;
-      background-color: $light-text-color;
-      border: 1px solid $border-color;
-      border-radius: 5px;
-      padding: 5px 10px;
-      box-sizing: border-box;
-  margin-top: 3px;
-      @include main-font(400, 0.625rem, 0.75rem);
+      input {
+        height: 23px;
+        background-color: $light-text-color;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        margin-top: 3px;
+        @include main-font(400, 0.625rem, 0.75rem);
+      }
 
-    }
-    .profile__input_invalid{
-      border: 1px $color-of-error solid;
-    }
-    &:last-of-type{
-      max-width: 100%;
-    }
-    textarea{
-      height: 55px;
-      background-color: $light-text-color;
-      border: 1px solid $border-color;
-      border-radius: 5px;
-      resize: none;
-    }
+      .profile__error {
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        @include main-font(400, 0.625rem, 0.75rem);
+        color: $color-of-error;
+      }
+
+      .profile__input_invalid {
+        border: 1px $color-of-error solid;
+      }
+
+      &:last-of-type {
+        max-width: 100%;
+      }
+
+      textarea {
+        height: 55px;
+        background-color: $light-text-color;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        resize: none;
+      }
     }
 
     &:disabled {
