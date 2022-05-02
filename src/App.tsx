@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route, Navigate, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import CardsList from './components/CardsList/CardsList';
-import { IAddress, ICompany, IUser } from "./types/types";
+import {IUser } from "./types/types";
 import { url } from './assets/config';
 import Sidebar from './components/Sidebar/Sidebar';
 import './assets/main-styles.scss';
@@ -55,23 +55,23 @@ function App() {
 
   const citySort = (e: React.MouseEvent<HTMLButtonElement>) => {
     const sortUsers: IUser[] = [...users].sort(sortByCity);
-      setUsers(sortUsers);
+    setUsers(sortUsers);
   }
 
   const companySort = (e: React.MouseEvent<HTMLButtonElement>) => {
-     const sortUsers: IUser[] = [...users].sort(sortByCompany);
-     setUsers(sortUsers);
+    const sortUsers: IUser[] = [...users].sort(sortByCompany);
+    setUsers(sortUsers);
   }
 
   return (
     <BrowserRouter>
       <Sidebar citySort={citySort} companySort={companySort} />
       <Routes>
-      <Route path='/' element= {isLoader ? <Spinner /> : <CardsList users={users} />} />
+        <Route path='/' element={isLoader ? <Spinner /> : <CardsList users={users} />} />
 
-      <Route path="*" element={<Navigate to="/" />} />
-      <Route path='/:id' element={ <Profile users={users}/> }/>
-    
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path='/:id' element={<Profile users={users} />} />
+
       </Routes>
     </BrowserRouter>
   );

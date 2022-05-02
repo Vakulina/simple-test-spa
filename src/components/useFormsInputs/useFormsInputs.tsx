@@ -1,4 +1,4 @@
-import { ChangeEvent,  useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 type IValidatorFN = (s: string) => {};
 
@@ -26,7 +26,7 @@ export type IValues = {
 export type IForm = {
   fields: ICustomObject;
   isValid: boolean;
- 
+
 }
 
 type IOptions = {
@@ -45,12 +45,12 @@ export const useFormsInputs = (initialFields: ICustomObject): IForm => {
         validators: (!isString && value.validators) || null,
         isValid: (!isString && value.isValid) || true,
         required: (!isString && value.required) || false,
-          setState: (value: ChangeEvent<HTMLInputElement>) => handleInput(value, name),
+        setState: (value: ChangeEvent<HTMLInputElement>) => handleInput(value, name),
         ...(!isString && value),
       },
     };
 
-    return {...fields, ...field};
+    return { ...fields, ...field };
   }, {});
 
   const [fields, setState] = useState<ICustomObject>(form);
@@ -73,12 +73,12 @@ export const useFormsInputs = (initialFields: ICustomObject): IForm => {
     if (validators && Array.isArray(validators)) {
       const results = validators.map(validateFn => {
         if (typeof validateFn === 'string') return validateFn;
-    
+
         const validationResult = validateFn(value || '');
-    
+
         return typeof validationResult === 'string' ? validationResult : '';
       }).filter(message => message !== '');
-      
+
       if (results.length) {
         isValid = false;
         error = results[0];
@@ -101,7 +101,7 @@ export const useFormsInputs = (initialFields: ICustomObject): IForm => {
     const validatedField = fieldValidation(field);
 
     setState((prevState: ICustomObject) => {
-      const items = {...prevState, [name]: validatedField};
+      const items = { ...prevState, [name]: validatedField };
 
       setFormValid(getFormValidationState(items));
       return items;

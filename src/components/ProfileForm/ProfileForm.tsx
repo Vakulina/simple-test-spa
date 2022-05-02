@@ -1,8 +1,8 @@
 import React from "react";
-import { ChangeEvent} from 'react'
+import { ChangeEvent } from 'react'
 import { IUser } from '../../types/types';
 import Button from "../Button/Button";
-import { useFormsInputs} from "../useFormsInputs/useFormsInputs";
+import { useFormsInputs } from "../useFormsInputs/useFormsInputs";
 import './ProfileForm.scss'
 
 interface ProfileFormProps {
@@ -14,8 +14,8 @@ interface IStringIndex {
 }
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
-  const [errors, showErrors ] = React.useState<boolean>(false);
-  const [comment, setComment] =React.useState<string>('');
+  const [errors, showErrors] = React.useState<boolean>(false);
+  const [comment, setComment] = React.useState<string>('');
   const formInputs = {
     name: {
       value: `${(user && user.name)}`,
@@ -46,7 +46,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       required: true,
       validators: [
         (s: string) => !s.length && 'Поле обязательно для заполнения',
-        (s: string) => !(/[^@\s]+@[^@\s]+\.[^@\s]+/).test(s)&& 'Введите валидный e-mail',
+        (s: string) => !(/[^@\s]+@[^@\s]+\.[^@\s]+/).test(s) && 'Введите валидный e-mail',
       ],
     },
     street: {
@@ -78,7 +78,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       required: true,
       validators: [
         (s: string) => !s.length && 'Поле обязательно для заполнения',
-        (s: string) => !(/[1-9-]+/).test(s)&& 'Введите валидный zipcode',
+        (s: string) => !(/[1-9-]+/).test(s) && 'Введите валидный zipcode',
       ],
     },
     phone: {
@@ -99,65 +99,64 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, isDisabled }) => {
       required: true,
       validators: [
         (s: string) => !s.length && 'Поле обязательно для заполнения',
-        (s: string) => !(/^(https?:\/\/)?([\w\.]+)\.([a-z]{2,6}\.?)(\/[\w\.]*)*\/?$/).test(s)&& 'Введите валидный website',
-      ],   
+        (s: string) => !(/^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/).test(s) && 'Введите валидный website',
+      ],
     },
   }
 
   const { fields, isValid } = useFormsInputs(formInputs);
 
   const { name, username, email, street, city, zipcode, phone, website } = fields;
- 
+
   const formFields = [name, username, email, street, city, zipcode, phone, website];
-  
-  function handleCommentChange(e:ChangeEvent<HTMLTextAreaElement>) {
+
+  function handleCommentChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setComment(e.target.value);
   }
 
-  const getNewData= () => {
+  const getNewData = () => {
     const myObj: IStringIndex = {}
     formFields.forEach(field => {
       const prop = field.label.toLocaleLowerCase().replace(' ', '-')
       myObj[prop] = field.value
     })
-    myObj.comment=comment;
+    myObj.comment = comment;
     console.log(JSON.stringify(myObj))
   }
   return (
     <>
-      <form className='profile__form' onSubmit={(e)=>{
-              e.preventDefault()
-              if (isValid) {
-              getNewData()
-              }
-              else {
-                showErrors(true)
-              }
-      }}>
+      <form className='profile__form' onSubmit={() => { }}>
         <fieldset disabled={isDisabled}>
           {formFields.map((field, index) => (
-
-              <label key={index} className='profile__label'>
-                {field.label}
-                <input
-                  type='text'
-                  className={!field.isValid ? 'profile__input_invalid' : ''}
-                  value={field.value}
-                  onChange={field.setState}
-                />
-                    {errors&&field.error && <span className="profile__error">{
+            <label key={index} className='profile__label'>
+              {field.label}
+              <input
+                type='text'
+                className={!field.isValid ? 'profile__input_invalid' : ''}
+                value={field.value}
+                onChange={field.setState}
+              />
+              {errors && field.error && <span className="profile__error">{
                 field.error
               }</span>}
-              </label>
-  
+            </label>
           )
           )}
           <label className='profile__label'>
             Comment
-            <textarea className="profile__comment" onChange={(e: ChangeEvent<HTMLTextAreaElement>)=>handleCommentChange(e)}></textarea>
+            <textarea className="profile__comment"
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => handleCommentChange(e)} />
           </label>
         </fieldset>
-        <Button className="button_send-form" onClick={() => { }} buttonText="Отправить" disabled={isDisabled} />
+        <Button className="button_send-form" onClick={(e) => {
+          e.preventDefault()
+          if (isValid) {
+            getNewData()
+          }
+          else {
+            showErrors(true)
+          }
+        }} buttonText="Отправить" disabled={isDisabled} />
       </form>
     </>
   )

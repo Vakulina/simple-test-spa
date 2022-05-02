@@ -7,9 +7,7 @@ interface CardsListProps {
   users: IUser[];
 }
 const CardsList: React.FC<CardsListProps> = ({ users }) => {
-
   return (
-
     <div className="cardsList">
       <p className="cardsList__paragraf">Список пользователей</p>
       {users.map(user => {
