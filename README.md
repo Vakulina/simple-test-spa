@@ -25,3 +25,6 @@
 - Typescript
 - React (Create Reacte App)
 - React-hooks
+
+## Деплой
+https://vakulina.github.io/simple-test-spa/
